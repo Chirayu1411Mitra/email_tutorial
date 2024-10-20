@@ -70,30 +70,63 @@
     const emailInput = document.querySelector('.email');
     const msgInput = document.querySelector('.msg');
 
+    // form.addEventListener('submit', (e) => {
+    //   e.preventDefault();
+
+    //   const name = nameInput.value;
+    //   const email = emailInput.value;
+    //   const message = msgInput.value;
+
+    //   // Sending email using SMTP.js
+    //   Email.send({
+    //     SecureToken: "3c6b07d0-2a28-420c-bf6f-594040e239d8", // Replace with your actual secure token from SMTP.js
+    //     To: 'shitkara7410@gmail.com', // Replace with recipient's email
+    //     From: email,
+    //     Subject: `New message from ${name}`,
+    //     Body: `Name: ${name}<br>Email: ${email}<br>Message: ${message}`
+    //   }).then(
+    //     (response) => {
+    //       if (response === 'OK') {
+    //         alert('Message sent successfully!');
+    //       } else {
+    //         alert('Failed to send message. Please try again.');
+    //       }
+    //     }
+    //   );
+    // });
     form.addEventListener('submit', (e) => {
-      e.preventDefault();
+  e.preventDefault();
 
-      const name = nameInput.value;
-      const email = emailInput.value;
-      const message = msgInput.value;
+  const name = nameInput.value;
+  const email = emailInput.value;
+  const message = msgInput.value;
 
-      // Sending email using SMTP.js
-      Email.send({
-        SecureToken: "3c6b07d0-2a28-420c-bf6f-594040e239d8", // Replace with your actual secure token from SMTP.js
-        To: 'shitkara7410@gmail.com', // Replace with recipient's email
-        From: email,
-        Subject: `New message from ${name}`,
-        Body: `Name: ${name}<br>Email: ${email}<br>Message: ${message}`
-      }).then(
-        (response) => {
-          if (response === 'OK') {
-            alert('Message sent successfully!');
-          } else {
-            alert('Failed to send message. Please try again.');
-          }
-        }
-      );
-    });
+  // Debugging - Log values to ensure they are captured correctly
+  console.log(`Name: ${name}, Email: ${email}, Message: ${message}`);
+
+  // Sending email using SMTP.js
+  Email.send({
+    SecureToken: "3c6b07d0-2a28-420c-bf6f-594040e239d8", // Replace with your actual secure token from SMTP.js
+    To: email, // Replace with recipient's email
+    From: email,
+    Subject: `New message from ${name}`,
+    Body: `Name: ${name}<br>Email: ${email}<br>Message: ${message}`
+  }).then(
+    (response) => {
+      console.log(response); // Log the response for debugging
+      if (response === 'OK') {
+        alert('Message sent successfully!');
+      } else {
+        alert('Failed to send message. Please try again.');
+      }
+    }
+  ).catch((error) => {
+    // Catch and log any errors for debugging
+    console.error('Error occurred:', error);
+    alert('An error occurred. Check the console for more details.');
+  });
+});
+
   </script>
 
 </body>
