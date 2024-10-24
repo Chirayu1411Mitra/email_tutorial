@@ -75,13 +75,13 @@
 
       const name = nameInput.value;
       const email = emailInput.value;
-      const message = msgInput.value;
+      const message= msgInput.value
 
       // Sending email using SMTP.js
       Email.send({
-        SecureToken: "3c6b07d0-2a28-420c-bf6f-594040e239d8", // Replace with your actual secure token from SMTP.js
-        To: 'shitkara7410@gmail.com', // Replace with recipient's email
-        From: email,
+        SecureToken: "a045bc5e-beb3-409d-aab2-0150dab16810", 
+        To: email, 
+        From: 'shitkara7410@gmail.com',
         Subject: `New message from ${name}`,
         Body: `Name: ${name}<br>Email: ${email}<br>Message: ${message}`
       }).then(
